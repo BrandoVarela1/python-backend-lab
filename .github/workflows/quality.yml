@@ -38,5 +38,13 @@ jobs:
 
       - name: Ruff format check
         run: ruff format --check .
+      - name: Show repository structure
+        run: |
+          pwd
+          find . -maxdepth 3 -type f | sort
+
+      - name: Collect tests
+        run: python -m pytest --collect-only -v
+
       - name: Run tests
-        run: python -m pytest -vpython -m pytest -v
+        run: python -m pytest -v
