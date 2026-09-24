@@ -48,3 +48,15 @@ jobs:
 
       - name: Run tests
         run: python -m pytest -v
+
+      - name: Set up Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: "lts/*"
+          cache: "npm"
+
+      - name: Install Node development tools
+        run: npm ci
+
+      - name: Type check
+        run: npx pyright
